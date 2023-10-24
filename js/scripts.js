@@ -67,6 +67,23 @@ function boldPassage(word, text) {
     return p;
 }
 
+function wordStat(text) {
+    let textArray = text.split(" ");
+    const statArray = []
+    textArray.forEach(function(element) {
+        let newArray = [element, 0];
+        let specificWord = element;
+        textArray.forEach(function (element, index) {
+            if (element === specificWord) {
+                newArray[1]++;
+                textArray.splice(index);
+            };
+        });
+        statArray.push(newArray);
+    });
+    console.log(statArray);
+}
+
 // UI Logic
 
 function handleFormSubmission(event) {

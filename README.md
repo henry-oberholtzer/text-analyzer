@@ -79,3 +79,7 @@ const word = "hello";
 const text = "yo";
 boldPassage(word, text);
 Expected Output: <p>yo</p>
+
+#### Describe: wordStats()
+
+Test: "It should return a word and a count of number when recieving a word"
