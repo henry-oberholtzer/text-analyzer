@@ -34,5 +34,5 @@ function censor(text) {
             cleanText += element.charAt(0) + beep.repeat(element.length - 1) + " ";
         } else cleanText += element + " ";
     });
-    return cleanText;
+    return cleanText.trim;
 }
