@@ -1,7 +1,12 @@
 // Utility Logic
 
-function isEmpty(testString) {
-    return (testString.trim().length === 0);
+function isEmpty() {
+    for (let i=0; i < arguments.length; i++) {
+        if (arguments[i].trim().length === 0) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Business Logic
@@ -47,7 +52,7 @@ function censor(text) {
 }
 
 function boldPassage(word, text) {
-    if (isEmpty(word) || isEmpty(text)) {
+    if (isEmpty(word, text)) {
         return null;
     }
     const p = document.createElement("p");
@@ -67,6 +72,20 @@ function boldPassage(word, text) {
     return p;
 }
 
+function firstInstanceOfWord(word, text) {
+    if (isEmpty(word)) {
+        return 0;
+    }
+    const textArray = text.split(" ");
+    for (let i = 0; i < textArray.length; i++) {
+        if (word === textArray[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+// WIP
 function wordStat(text) {
     let textArray = text.split(" ");
     const statArray = []
@@ -92,8 +111,10 @@ function handleFormSubmission(event) {
     const word = document.getElementById("word").value;
     const wordCount = wordCounter(passage);
     const occurencesOfWord = numberOfOccurrencesInText(word, passage);
+    const firstOccurence = firstInstanceOfWord(word, passage);
     document.getElementById("total-count").innerText = wordCount;
     document.getElementById("selected-count").innerText = occurencesOfWord;
+    document.getElementById("first-occurence").innerText = firstOccurence;
     let boldedPassage = boldPassage(word, passage);
     if (boldedPassage) {
         document.querySelector("div#bolded-passage").append(boldedPassage);
