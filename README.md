@@ -1,3 +1,10 @@
+# Text Analyzer
+
+Lesson followed by Henry Oberholtzer & Noah Kise
+
+
+## Tests
+
 #### Describe: wordCounter()
 
 Test: "It should return 1 if a passage has just one word."
